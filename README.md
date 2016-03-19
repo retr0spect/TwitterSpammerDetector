@@ -1,2 +1,2 @@
 # TwitterSpammerDetector
-Requirments: scikit-learn, mayplotlib
+Requirments: Scikit-learn, Matplotlib libraries 
