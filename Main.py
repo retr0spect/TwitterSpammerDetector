@@ -334,10 +334,18 @@ select_classifier(RandomForestClassifier(n_estimators=150), "Random Forest Class
 
 
 
-
+# import re
+# import numpy as np
+# from sklearn import metrics
+# from sklearn.naive_bayes import GaussianNB
+# from sklearn import svm
+# from sklearn.ensemble import AdaBoostClassifier
+# from sklearn.tree import DecisionTreeClassifier
 #
-#
-#
+# y_training = []
+# y_testing = []
+# feature_set_train = []
+# feature_set_test = []
 # def make(user_file, tweet_file):
 #     training_dict = {}
 #     with open(user_file) as f:
@@ -369,8 +377,8 @@ select_classifier(RandomForestClassifier(n_estimators=150), "Random Forest Class
 #                     listt.append(count_http)  # [4] Appending HTTP count
 #
 #     for value in training_dict.itervalues():
-#         ratio_http = value[4] / value[2]
-#         value.append(ratio_http)  # [5] Appending HTTP ratio
+#        ratio_http = value[4] / value[2]
+#        value.append(ratio_http)  # [5] Appending HTTP ratio
 #
 #     with open(tweet_file) as f:
 #         all_user_info = f.readlines()
@@ -385,9 +393,6 @@ select_classifier(RandomForestClassifier(n_estimators=150), "Random Forest Class
 #                     listt = training_dict[user_id]
 #                     listt.append(count_at)  # [4] Appending @ count
 #
-#
-#
-#
 #     for value in training_dict.itervalues():
 #         ratio_at = value[6] / value[2]
 #         value.append(ratio_at)  # [5] Appending HTTP ratio
@@ -399,10 +404,6 @@ select_classifier(RandomForestClassifier(n_estimators=150), "Random Forest Class
 #         del value[3]
 #         del value[4]
 #         l_o_l.append(value)
-#
-#     # x = np.array(l_o_l)
-#     # x_normed = x / x.max(axis=0)
-#     # return x_normed
 #
 #     return l_o_l
 #
@@ -423,34 +424,25 @@ select_classifier(RandomForestClassifier(n_estimators=150), "Random Forest Class
 # norm_testing_features = y / y.max(axis=0)
 #
 #
+# def select_classifier(algo, label):
+#     model = algo
+#     model.fit(norm_training_features, train_labels)
+#     expected = test_labels
+#     predicted = model.predict(norm_testing_features)
+#
+#     print(metrics.classification_report(expected, predicted))
+#     print("")
+#
+#     print(metrics.confusion_matrix(expected, predicted))
+#     print("")
+#     print("")
 #
 #
-# # with open("Training_data/legitimate_users.txt") as f:
-# #     all_user_info = f.readlines()
-# #     for user_info in all_user_info:
-# #         name_length = int(re.split(r'\t+', user_info)[6])  # Name length
-# #         name_description = int(re.split(r'\t+', user_info)[7][:-1])  # Bio length
-# #         y_training.append(1)
-# #         feature_set_train.append([name_length, name_description])
-# #
-# # with open("Testing_data/spammers.txt") as f:
-# #     all_user_info = f.readlines()
-# #     for user_info in all_user_info:
-# #         name_length = int(re.split(r'\t+', user_info)[6])  # Name length
-# #         name_description = int(re.split(r'\t+', user_info)[7][:-1])  # Bio length
-# #
-# #         y_testing.append(0)
-# #         feature_set_test.append([name_length, name_description])
-# #
-# # with open("Testing_data/legitimate_users.txt") as f:
-# #     all_user_info = f.readlines()
-# #     for user_info in all_user_info:
-# #         name_length = int(re.split(r'\t+', user_info)[6])  # Name length
-# #         name_description = int(re.split(r'\t+', user_info)[7][:-1])  # Bio length
-# #         y_testing.append(1)
-# #         feature_set_test.append([name_length, name_description])
-# #
-# # mat = np.array(feature_set_train)
-# # mat1 = np.array(feature_set_test)
-# #
+# # Naive Bias
+# select_classifier(GaussianNB(), "Naive Bias Classifier")
 #
+# # SVM
+# select_classifier(svm.SVC(), "SVM Classifier")
+#
+# # ADA Boost
+# select_classifier(AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), algorithm="SAMME", n_estimators=50), "ADA Boost Classifier")
